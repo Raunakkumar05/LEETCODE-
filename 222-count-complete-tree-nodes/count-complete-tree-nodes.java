@@ -14,9 +14,18 @@
  * }
  */
 class Solution {
-  public int countNodes(TreeNode root) {
-    if (root == null)
-      return 0;
-    return 1 + countNodes(root.left) + countNodes(root.right);
-  }
+
+    public int countNodes(TreeNode root) {
+        return func(root);
+    }
+
+    public int func(TreeNode root) {
+        if (root == null)
+            return 0;
+
+        int left = func(root.left);
+        int right = func(root.right);
+
+        return left + right + 1;
+    }
 }
